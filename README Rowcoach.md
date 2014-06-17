@@ -10,6 +10,7 @@ Features
 * Using a button in the action bar the user can navigate to the settings activity.
 * The user can set the amount of strokes the app takes for an average for more accuracy. 
 * The interval length can be adjusted.
+
 Technological information
 -------------------------
 All files will be written in Java using Eclips with the ADT plug-in. No other libraries other than the default Java libraries will be used. 
