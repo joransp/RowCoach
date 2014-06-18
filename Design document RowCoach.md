@@ -47,7 +47,7 @@ IntervalTime, containing:
 
 
 Settings, containing:
-*	*int strokeAmount
+*	*int strokeAmount* 
 	This integer stores the number of strokes rowed between two buttonclicks.
 *	*float interval*
 	This float stores the length of the interval.
