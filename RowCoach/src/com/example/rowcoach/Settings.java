@@ -64,7 +64,12 @@ public class Settings extends ActionBarActivity {
 		strokeNumber = (SeekBar) findViewById(R.id.stroke_number);
 		strokeCount = strokeNumber.getProgress() + 1;
 		intervalDistance = (EditText) findViewById(R.id.distance_input);
-		distance = Integer.valueOf(intervalDistance.getText().toString());
+		if (intervalDistance.getText().length() == 0) {
+			distance = 0;
+		}
+		else {
+			distance = Integer.valueOf(intervalDistance.getText().toString());
+		}
 	    SharedPreferences preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = preferences.edit();
 	    editor.putInt("stroke_number", strokeCount);
