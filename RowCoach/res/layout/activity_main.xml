@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#81BEF7"
+    tools:context="com.example.rowcoach.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="21dp"
+        android:text="@string/distance_collumn" 
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/intervallist"
+        android:layout_alignLeft="@+id/interval"
+        android:text="@string/interval_time_collumn" 
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intervallist"
+        android:layout_centerHorizontal="true"
+        android:text="@string/clock"
+        android:textSize="50sp" />
+
+    <GridView
+        android:id="@+id/intervallist"
+        android:layout_width="fill_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth" >
+    </GridView>
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/interval"
+        android:layout_marginLeft="19dp"
+        android:background="#A4A4A4"
+        android:text="@string/reset"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView3"
+        android:background="#A4A4A4"
+        android:text="@string/stroke"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/startStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/stroke"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:background="#A4A4A4"
+        android:text="@string/start"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/interval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/startStop"
+        android:background="#A4A4A4"
+        android:text="@string/interval"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/stroke_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/stroke"
+        android:layout_alignBottom="@+id/stroke"
+        android:layout_toLeftOf="@+id/interval"
+        android:text="@string/press_stroke"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:text="@string/time_collumn"
+        android:textSize="15sp"
+        android:layout_marginLeft="120dp" />
+
+</RelativeLayout>
+

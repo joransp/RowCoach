@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RowCoach</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="clock">CLOCK</string>
+    <string name="start">START</string>
+    <string name="reset">RESET</string>
+    <string name="interval">INTERVAL</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="interval_distance_settings">Interval distance:</string>
+    <string name="distance">Distance</string>
+    <string name="stroke_amount">Number of strokes for strokecount:</string>
+    <string name="stroke">STROKE</string>
+    <string name="press_stroke">press STROKE</string>
+    <string name="distance_collumn">DISTANCE</string>
+    <string name="time_collumn">TIME</string>
+    <string name="interval_time_collumn">INTERVALTIME</string>
+        
+    
+    
+    
+</resources>

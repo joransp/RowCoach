@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rowcoach.Settings"
+    tools:ignore="MergeRootFrame" 
+    android:background="#81BEF7" >
+
+    <SeekBar
+        android:id="@+id/stroke_number"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="113dp"
+        android:max="9" 
+        android:background="#2E64FE"/>
+
+    <TextView
+        android:id="@+id/stroke_number_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/stroke_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/stroke_amount"
+        android:textSize="25sp" 
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/distance_input"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:ems="10"
+        android:hint="@string/distance"
+        android:inputType="number" 
+        android:textSize="25sp"
+        >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/distance_input_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="@string/interval_distance_settings"
+        android:textSize="25sp" />
+
+</RelativeLayout>
+

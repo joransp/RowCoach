@@ -26,3 +26,7 @@ Curly braces
 Ternary operator
 ----------------
 *	The Ternary operator, ?, should not be used.
+
+Classes
+-------
+*	Most of the code must be placed in the class itself, not in the MainActivity.
