@@ -22,17 +22,16 @@ public class MainActivity extends ActionBarActivity {
 	TextView clock;
 	TextView strokes;
 	StopWatch stopwatch;
-	boolean secondclick = false;
+	boolean secondClick = false;
 	boolean counting = false;
-	IntervalTime intervaltime;
-	float previoustime = 0;
-	float startingtime;
-	float stoppingtime;
+	IntervalTime intervalTime;
+	float previousTime = 0;
+	float startingTime;
+	float stoppingTime;
 	float elapsed;
-	float strokerate;
 	SharedPreferences preferences;
-	int strokenumber;
-	int intervaldistance;
+	int strokeNumber;
+	int intervalDistance;
 	int total = 0;
 	
 	
@@ -42,36 +41,36 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		
 		// create new stopwatch
-		stopwatch = new StopWatch();
-		clock = (TextView) findViewById(R.id.clock);
+		this.stopwatch = new StopWatch();
+		this.clock = (TextView) findViewById(R.id.clock);
 		
 		// create new interval
-		intervaltime = new IntervalTime();
+		this.intervalTime = new IntervalTime();
 		
 		// find stroke textview
-		strokes = (TextView) findViewById(R.id.stroke_sign);
+		this.strokes = (TextView) findViewById(R.id.stroke_sign);
 		
 		// find gridview and set new adapter
-		final GridView gridview = (GridView) findViewById(R.id.intervallist);
+		final GridView gridView = (GridView) findViewById(R.id.intervallist);
 		final ArrayList<String> list = new ArrayList<String>();
 		final Adapter adapter = new Adapter(this,
 				android.R.layout.simple_list_item_1, list);
-		gridview.setAdapter(adapter);
+		gridView.setAdapter(adapter);
 		
 		// find button to start stopwatch when clicked
 		final Button startStop = (Button) findViewById(R.id.startStop);
         startStop.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// start stopwatch at the first click and pause at second click
-            	if(secondclick) {
+            	if(secondClick) {
             		stopwatch.stop();
-            		startStop.setText("START");
+            		startStop.setText(R.string.start);
             	}
             	else {
             		stopwatch.start(clock);	
-            		startStop.setText("STOP");
+            		startStop.setText(R.string.stop);
             	}
-            	secondclick = !secondclick;
+            	secondClick = !secondClick;
             }    
         });
         
@@ -80,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	stopwatch.reset(); // reset stopwatch
-            	secondclick = false; // set startStop button to default
+            	secondClick = false; // set startStop button to default
             	startStop.setText("START");
             	list.clear(); // clear gridview
             	total = 0;
@@ -91,24 +90,24 @@ public class MainActivity extends ActionBarActivity {
         final Button interval = (Button) findViewById(R.id.interval);
         interval.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	if (secondclick) {
+            	if (secondClick) {
             		// load intervaldistance
 	            	preferences = getSharedPreferences("MyPreferences",  Context.MODE_PRIVATE);
-	                intervaldistance = preferences.getInt("interval_distance", 0);	
-	                total += intervaldistance;
+	                intervalDistance = preferences.getInt("interval_distance", 0);	
+	                total += intervalDistance;
 	                
 	                // set intervaltime class
-	            	intervaltime.setInterval(total);
-	            	intervaltime.setTime(stopwatch.getTime());
-	            	intervaltime.setIntervalTime(stopwatch.getTime() - previoustime);
+	            	intervalTime.setInterval(total);
+	            	intervalTime.setTime(stopwatch.getTime());
+	            	intervalTime.setIntervalTime(stopwatch.getTime() - previousTime);
 	            	
 	            	// remember last stopwatch pause
-	            	previoustime = stopwatch.getTime();
+	            	previousTime = stopwatch.getTime();
 	            	
 	            	// add data to gridview and update gridview
-	            	list.add(0, stopwatch.stringTime(intervaltime.getIntervaltime()));
-	            	list.add(0, stopwatch.stringTime(intervaltime.getTime()));
-	            	list.add(0, String.format("%.0f", intervaltime.getInterval()));
+	            	list.add(0, stopwatch.stringTime(intervalTime.getIntervaltime()));
+	            	list.add(0, stopwatch.stringTime(intervalTime.getTime()));
+	            	list.add(0, String.format("%.0f", intervalTime.getInterval()));
 	            	adapter.notifyDataSetChanged();
             	}
             	
@@ -121,15 +120,15 @@ public class MainActivity extends ActionBarActivity {
             	// start counting at the first click and stop at the second
             	if (counting) {
             		preferences = getSharedPreferences("MyPreferences",  Context.MODE_PRIVATE); // load stroke_number
-                    strokenumber = preferences.getInt("stroke_number", 0);
-            		stoppingtime = SystemClock.elapsedRealtime();
-            		elapsed = stoppingtime - startingtime; // calculate elapsed time
-            		strokerate = strokenumber * 60000 / elapsed; // calculate strokerate
-            		strokes.setText(String.format("SR: %.1f", strokerate)); // show strokerate
+                    strokeNumber = preferences.getInt("stroke_number", 0);
+            		stoppingTime = SystemClock.elapsedRealtime();
+            		elapsed = stoppingTime - startingTime; // calculate elapsed time
+            		float strokeRate = strokeNumber * 60000 / elapsed; // calculate strokerate
+            		strokes.setText(String.format("SR: %.1f", strokeRate)); // show strokerate
             		counting = !counting;
             	}
             	else {
-            		startingtime = SystemClock.elapsedRealtime(); // start counting
+            		startingTime = SystemClock.elapsedRealtime(); // start counting
             		counting = !counting;
             		strokes.setText("counting...");
             	}
@@ -140,17 +139,14 @@ public class MainActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// inflates the menu when clicked on
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		// go to SettingsActivity when clicked on settings
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			goSettings();
@@ -161,7 +157,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void goSettings() {
     	// Define intent to go to settings
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 	

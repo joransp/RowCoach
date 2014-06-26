@@ -6,69 +6,71 @@ import android.widget.TextView;
 
 public class StopWatch {
 	// define variable types
-	private int pause = 1;
+	private final int PAUSE = 100;
 	private Handler handler = new Handler();
-	private float startingtime = SystemClock.elapsedRealtime();
-	private float pausetime = 0;
+	private float startingTime = SystemClock.elapsedRealtime();
+	private float pauseTime = 0;
 	private float time = 0;
-	private float centiseconds;
-	private float deciseconds;
-	private float seconds;
-	private float minutes;
-	private float finalDeciseconds;
-	private float finalSeconds;
-	private float finalMinutes;
-	private TextView textview;
-	private String clockString;
+	private TextView textView;
 	
 	// create new timer 
 	private Runnable timer = new Runnable() {
 	    @Override 
 	    public void run() {
-	      time = SystemClock.elapsedRealtime() - startingtime + pausetime; // calculate current stopwatchtime
-	      textview.setText(stringTime(time)); // show time
-	      handler.postDelayed(timer, pause); // repeat actions
+	      time = SystemClock.elapsedRealtime() - startingTime + pauseTime; // calculate current stopwatchtime
+	      textView.setText(stringTime(time)); // show time
+	      handler.postDelayed(timer, PAUSE); // repeat actions
 	    }
 	};
 	  
 	// transforms time in miliseconds to viewable string
 	public String stringTime(float inputTime) {
 		   
-	    centiseconds = inputTime % 100;
-	    deciseconds = inputTime % 1000;
-	    seconds = inputTime % 60000;
-	    minutes = inputTime % 3600000;
+	    float centiSeconds = inputTime % 100;
+	    float deciSeconds = inputTime % 1000;
+	    float seconds = inputTime % 60000;
+	    float minutes = inputTime % 3600000;
 	    
-	    finalDeciseconds = (deciseconds - centiseconds) / 100;
-	    finalSeconds = (seconds - deciseconds) / 1000;
-	    finalMinutes = (minutes - seconds) / 60000;
+	    float finalDeciSeconds = (deciSeconds - centiSeconds) / 100;
+	    float finalSeconds = (seconds - deciSeconds) / 1000;
+	    float finalMinutes = (minutes - seconds) / 60000;
 	    
-	    clockString = String.format("%.0f : %.0f.%.0f", finalMinutes, finalSeconds, finalDeciseconds);
+	    String clockString = String.format("%.0f : %.0f.%.0f", finalMinutes, finalSeconds, finalDeciSeconds);
 	    return clockString;
 	}
 	
-	// start timer
+	/**
+	 * Starts timer
+	 * @param clockField TextField to view clock
+	 */
 	public void start(TextView clockField) {
-		startingtime = SystemClock.elapsedRealtime();
-		textview = clockField;
+		startingTime = SystemClock.elapsedRealtime();
+		textView = clockField;
 		timer.run();
 	}
 	
-	// reset timer
+	/**
+	 * Resets timer
+	 */
 	public void reset() {
 		handler.removeCallbacks(timer);
-		startingtime = SystemClock.elapsedRealtime();
-		pausetime = 0;
-		textview.setText(stringTime(0));
+		startingTime = SystemClock.elapsedRealtime();
+		pauseTime = 0;
+		textView.setText(stringTime(0));
 	}
 	
-	// stop timer
+	/**
+	 * stops timer
+	 */
 	public void stop() {
-		pausetime = time;
+		pauseTime = time;
 		handler.removeCallbacks(timer);
 	}
 	
-	// return time
+	/**
+	 * Gets current clocktime
+	 * @return Returns variable time;
+	 */
 	public float getTime() {
 		return time;
 	}

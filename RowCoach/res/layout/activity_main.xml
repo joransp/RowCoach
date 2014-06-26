@@ -8,7 +8,7 @@
     tools:ignore="MergeRootFrame" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/distance_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -18,7 +18,7 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/interval_time_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/intervallist"
@@ -40,7 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="220dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/distance_title"
         android:columnWidth="90dp"
         android:gravity="center"
         android:horizontalSpacing="10dp"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView3"
+        android:layout_alignRight="@+id/interval_time_title"
         android:background="#A4A4A4"
         android:text="@string/stroke"
         android:textSize="25sp" />
@@ -101,11 +101,11 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/time_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBaseline="@+id/distance_title"
+        android:layout_alignBottom="@+id/distance_title"
         android:text="@string/time_collumn"
         android:textSize="15sp"
         android:layout_marginLeft="120dp" />

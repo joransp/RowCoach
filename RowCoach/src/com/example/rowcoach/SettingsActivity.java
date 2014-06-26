@@ -9,11 +9,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class Settings extends ActionBarActivity {
+public class SettingsActivity extends ActionBarActivity {
 	// define variable types
 	SeekBar strokeNumber;
-	EditText intervalDistance;
-	int strokeCount;
 	int distance;
 
 
@@ -22,8 +20,7 @@ public class Settings extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
-		strokeNumber = (SeekBar) findViewById(R.id.stroke_number);
-
+		this.strokeNumber = (SeekBar) findViewById(R.id.stroke_number);
 
 		// View progress from seekBar strokeNumber
 		strokeNumber.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -62,8 +59,8 @@ public class Settings extends ActionBarActivity {
 	protected void onStop() {
 		super.onStop();
 		strokeNumber = (SeekBar) findViewById(R.id.stroke_number);
-		strokeCount = strokeNumber.getProgress() + 1;
-		intervalDistance = (EditText) findViewById(R.id.distance_input);
+		int strokeCount = strokeNumber.getProgress() + 1;
+		EditText intervalDistance = (EditText) findViewById(R.id.distance_input);
 		if (intervalDistance.getText().length() == 0) {
 			distance = 0;
 		}
